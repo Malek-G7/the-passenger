@@ -7,67 +7,51 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class passengerTest {
-    passenger myPassenger ;
-
-    @BeforeEach
-    void setup(){
-    }
-    @AfterEach
-    void teardown(){
-    }
 
     @Test
     void testConstuctorSuccessTitle() {
-        myPassenger = new passenger("Mr","Malek","g000387032","0830593772",22);
-        assertEquals("Mr",myPassenger.getTitle());
+        assertEquals("Mr", new passenger("Mr","Malek","g000387032","0830593772",22).getTitle());
+        assertEquals("Mrs", new passenger("Mrs","Malek","g000387032","0830593772",22).getTitle());
+        assertEquals("Ms", new passenger("Ms","Malek","g000387032","0830593772",22).getTitle());
     }
     @Test
     void testConstuctorSuccessName() {
-        myPassenger = new passenger("Mr","Malek","g000387032","0830593772",22);
-        assertEquals("Malek",myPassenger.getName());
+        assertEquals("Malek",new passenger("Mr","Malek","g000387032","0830593772",22).getName());
     }
     @Test
     void testConstuctorSuccessID() {
-        myPassenger = new passenger("Mr","Malek","g000387032","0830593772",22);
-        assertEquals("g000387032",myPassenger.getID());
+        assertEquals("g000387032",new passenger("Mr","Malek","g000387032","0830593772",22).getID());
     }
     @Test
     void testConstuctorSuccessPhone() {
-        myPassenger = new passenger("Mr","Malek","g000387032","0830593772",22);
-        assertEquals("0830593772",myPassenger.getPhone());
+        assertEquals("0830593772",new passenger("Mr","Malek","g000387032","0830593772",22).getPhone());
     }
     @Test
     void testConstuctorSuccessAge() {
-        myPassenger = new passenger("Mr","Malek","g000387032","0830593772",22);
-        assertEquals(22,myPassenger.getAge());
+        assertEquals(22,new passenger("Mr","Malek","g000387032","0830593772",22).getAge());
     }
     @Test
-    void testConstructorFailTitle()
-    {
+    void testConstructorFailTitle() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> { new passenger("DR","Malek","g000387032","0830593772",22);});
         assertEquals("This is not a valid title, try Mr, Mrs or Ms", ex.getMessage());
     }
     @Test
-    void testConstructorFailName()
-    {
+    void testConstructorFailName() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> { new passenger("Mr","M","g000387032","0830593772",22);});
         assertEquals("name must contain min 3 characters", ex.getMessage());
     }
     @Test
-    void testConstructorFailID()
-    {
+    void testConstructorFailID() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> { new passenger("Mr","Malek","g00","0830593772",22);});
         assertEquals("ID must contain min 10 characters", ex.getMessage());
     }
     @Test
-    void testConstructorFailPhone()
-    {
+    void testConstructorFailPhone() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> { new passenger("Mr","Malek","g000387032","083",22);});
         assertEquals("phone no must contain min 7 characters", ex.getMessage());
     }
     @Test
-    void testConstructorFailAge()
-    {
+    void testConstructorFailAge() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> { new passenger("Mr","Malek","g000387032","0830593772",12);});
         assertEquals("age must be 16 or higher", ex.getMessage());
     }
