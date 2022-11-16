@@ -1,5 +1,5 @@
 package ie.atu;
-
+//passenger class
 public class passenger {
     private String title;
     private  String name;
